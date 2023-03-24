@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+
+<body class="container-fluid p-2">
+    <h1>Calculator</h1>
+    <div class="m-3 row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text">a</span>
+            <input class="form-control" id="a" />
+        </div>
+
+        <div class="input-group mb-3 col">
+            <span class="input-group-text">b</span>
+            <input class="form-control" id="b" />
+        </div>
+    </div>
+    <div class="m-3 row">
+        <div class="input-group">
+            <select class="form-select col-6" id="inputGroupSelect02">
+                <option selected>Choose...</option>
+                <option value="1">Add</option>
+                <option value="2">Subtract</option>
+                <option value="3">Multiply</option>
+                <option value="4">Divide</option>
+            </select>
+            <button class="btn btn-outline-secondary col-3" type="button" id="run">Run</button>
+        </div>
+
+    </div>
+    <div class="m-3 row">
+        <div class="input-group mb-3 col">
+            <span class="input-group-text">result</span>
+            <input class="form-control" id="result" disabled />
+        </div>
+    </div>
+    <script>
+        function isNumeric(str) {
+            if (typeof str != "string") return false // we only process strings!  
+            return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+                !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+        }
+
+        function add(a, b) {
+            return "Sorry you didn't implement addition yet";
+        }
+
+        function subtract(a, b) {
+            return "Sorry you didn't implement subtraction yet";
+        }
+
+        function multiply(a, b) {
+            return "Sorry you didn't implement multiplication yet";
+        }
+
+        function divide(a, b) {
+            return "Sorry you didn't implement division yet";
+        }
+
+        function quotient(a, b) {
+            return "Sorry you didn't implement quotient yet";
+        }
+
+        function remainder(a, b) {
+            return "Sorry you didn't implement remainder yet";
+        }
+
+        document.querySelector("#run").addEventListener('click', () => {
+            const a = Number(document.querySelector("#a").value);
+            const b = Number(document.querySelector("#b").value);
+            const result = document.querySelector("#result");
+
+            if (!isNaN(a) && !isNaN(b)) {
+                switch (document.querySelector("#inputGroupSelect02").value) {
+                    case "1":
+                        result.value = add(Number(a), Number(b));
+                        break;
+                    case "2":
+                        result.value = subtract(Number(a), Number(b));
+                        break;
+                    case "3":
+                        result.value = multiply(Number(a), Number(b));
+                        break;
+                    case "4":
+                        result.value = divide(Number(a), Number(b));
+                        break;
+                    default:
+                        result.value = "no operation is selected!";
+                }
+            } else {
+                result.value = "Check your inputs: a and b can be NUMBERS only!";
+            }
+        });
+    </script>
+</body>
+
+</html>
